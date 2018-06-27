@@ -24,7 +24,7 @@ homeassistant:
 
 home-assistant-unit:
   file.managed:
-    - name: /etc/systemd/system/home-assistant@homeassistant.service
+    - name: /etc/systemd/system/home-assistant.service
     - source:
       - salt://roles/home-automation/home-assistant.service
   module.run:
@@ -32,7 +32,7 @@ home-assistant-unit:
     - onchanges:
       - file: home-assistant-unit
 
-home-assitant:
+home-assistant:
   service.running:
     - enable: True
     - watch:
