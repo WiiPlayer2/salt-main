@@ -17,7 +17,7 @@ homeassistant:
     - user: homeassistant
     - group: homeassistant
   virtualenv.managed:
-    - venv_bin: python3 -m venv 
+    - venv_bin: pyvenv 
     - pip_pkgs:
       - wheel
       - homeassistant
