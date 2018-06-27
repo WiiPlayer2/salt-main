@@ -22,11 +22,18 @@ homeassistant:
       - wheel
       - homeassistant
 
-/etc/systemd/system/home-assistant@homeassistant.service:
+home-assistant-unit:
   file.managed:
+    - name: /etc/systemd/system/home-assistant@homeassistant.service
     - source:
       - salt://roles/home-automation/home-assistant.service
+  module.run:
+    - name: service.systemctl_reload
+    - onchanges:
+      - file: home-assistant-unit
 
 home-assitant:
   service.running:
     - enable: True
+    - watch:
+      - module: home-assistant-unit
