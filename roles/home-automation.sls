@@ -13,7 +13,7 @@ hassio_packages:
     - source:
       - salt://roles/home-automation/cli.ini
 
-{{ pillar['hassio_fqdn'] }}}:
+{{ pillar['hassio_fqdn'] }}:
   acme.cert:
     - email: {{ pillar['email'] }}
     - owner: homeassistant
