@@ -5,6 +5,14 @@ hassio_packages:
       - python3-venv
       - python3-pip
       - mosquitto
+      - apache2
+
+{{ pillar['hassio_fqdn'] }}}:
+  acme.cert:
+    - email: {{ pillar['email'] }}
+    - owner: homeassistant
+    - group: homeassistant
+    - webroot: /var/www/html
 
 homeassistant:
   user.present:
@@ -17,7 +25,8 @@ homeassistant:
     - user: homeassistant
     - group: homeassistant
   virtualenv.managed:
-    - venv_bin: pyvenv 
+    - venv_bin: pyvenv
+    - user: homeassistant
     - pip_pkgs:
       - wheel
       - homeassistant
