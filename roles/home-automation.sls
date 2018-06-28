@@ -65,5 +65,6 @@ mosquitto:
 home-assistant:
   service.running:
     - enable: True
-    - watch:
+    - watch_any:
       - module: home-assistant-unit
+      - acme: {{ pillar['hassio_fqdn'] }}
