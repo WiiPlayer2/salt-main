@@ -32,6 +32,10 @@ home-assistant-unit:
     - onchanges:
       - file: home-assistant-unit
 
+mosquitto:
+  service.running:
+    - enable: True
+
 home-assistant:
   service.running:
     - enable: True
