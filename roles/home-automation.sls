@@ -30,6 +30,9 @@ homeassistant:
   file.directory:
     - user: homeassistant
     - group: homeassistant
+    - recurse:
+      - user
+      - group
   virtualenv.managed:
     - venv_bin: pyvenv
     - user: homeassistant
