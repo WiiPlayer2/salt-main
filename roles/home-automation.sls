@@ -8,6 +8,11 @@ hassio_packages:
       - apache2
       - python-certbot-apache
 
+/etc/letsencrypt/cli.ini:
+  file.managed:
+    - source:
+      - salt://roles/home-automation/cli.ini
+
 {{ pillar['hassio_fqdn'] }}}:
   acme.cert:
     - email: {{ pillar['email'] }}
