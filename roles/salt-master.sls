@@ -1,6 +1,7 @@
 packages:
   pkg.installed:
-    - git
+    - pkgs:
+      - git
 
 github.com:
   ssh_known_hosts.present:
