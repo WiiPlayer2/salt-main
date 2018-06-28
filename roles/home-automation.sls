@@ -6,6 +6,7 @@ hassio_packages:
       - python3-pip
       - mosquitto
       - apache2
+      - python-certbot-apache
 
 {{ pillar['hassio_fqdn'] }}}:
   acme.cert:
