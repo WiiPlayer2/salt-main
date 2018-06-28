@@ -13,6 +13,14 @@ hassio_packages:
     - source:
       - salt://roles/home-automation/cli.ini
 
+/etc/letsencrypt/live:
+  file.directory:
+    - dir_mode: 755
+
+/etc/letsencrypt/archive:
+  file.directory:
+    - dir_mode: 755
+
 {{ pillar['hassio_fqdn'] }}:
   acme.cert:
     - email: {{ pillar['email'] }}
