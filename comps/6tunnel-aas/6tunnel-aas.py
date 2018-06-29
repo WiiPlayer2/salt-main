@@ -37,6 +37,7 @@ class SixTunnelAAS():
 
     def main(self):
         s = self._args.status
+        print("[MAIN] {}".format(s))
 
         if s == Status.start:
             self.start()
@@ -64,18 +65,22 @@ class SixTunnelAAS():
         return map
 
     def start(self):
+        print("[START]")
         for hash in self._map:
             self._start_mapping(hash, self._map[hash])
     
     def stop(self):
+        print("[STOP]")
         for f in os.listdir(PID_PATH):
             self._stop_file(os.path.join(PID_PATH, f))
     
     def restart(self):
+        print("[RESTART]")
         self.stop()
         self.start()
     
     def reload(self):
+        print("[RELOAD]")
         for f in os.listdir(PID_PATH):
             hash = f.split('.')[0]
             if hash not in self._map:
