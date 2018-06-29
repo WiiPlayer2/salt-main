@@ -78,8 +78,9 @@ home-assistant-map:
     - source:
       - salt://roles/home-automation/home-assistant.map
 
-6tunnel-aas:
+hassio-6tunnel-aas:
   service.running:
+    - name: 6tunnel-aas
     - enable: True
     - watch:
       - file: home-assistant-map
