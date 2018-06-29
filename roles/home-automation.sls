@@ -10,6 +10,7 @@ hassio_packages:
       - mosquitto
       - apache2
       - python-certbot-apache
+      - libatlas-base-dev
 
 /etc/letsencrypt/cli.ini:
   file.managed:
