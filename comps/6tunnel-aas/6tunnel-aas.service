@@ -5,6 +5,7 @@ After=network-online.target
 [Service]
 Type=simple
 User=root
+RemainAfterExit=yes
 ExecStart=/usr/bin/6tunnel-aas start
 ExecStop=/usr/bin/6tunnel-aas stop
 ExecReload=/usr/bin/6tunnel-aas reload
