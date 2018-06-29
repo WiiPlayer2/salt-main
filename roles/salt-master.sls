@@ -28,3 +28,8 @@ gitlab.com:
     - branch: master
     - force_reset: True
     - submodules: True
+
+salt-highstate-cron:
+  cron.present:
+    - name: salt '*' state.hightstate
+    - minute: 0,30
