@@ -13,6 +13,10 @@ def hash_str(obj):
 def hash_path(hash):
     return os.path.join(PID_PATH, '{}.pid'.format(hash))
 
+def run(cmd):
+    print(cmd)
+    os.system(cmd)
+
 class Status(Enum):
     start = 'start'
     stop = 'stop'
@@ -83,8 +87,7 @@ class SixTunnelAAS():
         if os.path.isfile(hash_path(hash)):
             raise SixTunnelAAS.Error('{0} already exists'.format(hash_path(hash)))
         cmd = '6tunnel {0} -p {1}'.format(line.strip(), hash_path(hash))
-        print(cmd)
-        os.system(cmd)
+        run(cmd)
     
     def _stop_mapping(self, hash):
         if not os.path.isfile(hash_path(hash)):
@@ -95,7 +98,7 @@ class SixTunnelAAS():
         pid_f = open(file)
         pid = pid_f.readline()
         pid_f.close()
-        subprocess.call(['kill', pid])
+        run('kill {}'.format(pid))
 
     def _restart_mapping(self, hash, line):
         try:
