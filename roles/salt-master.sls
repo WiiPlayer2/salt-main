@@ -1,7 +1,9 @@
 packages:
-  pkg.installed:
+  pkg.latest:
     - pkgs:
       - git
+      - salt-master
+      - salt-minion
 
 github.com:
   ssh_known_hosts.present:
