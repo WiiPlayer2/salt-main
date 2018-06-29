@@ -31,5 +31,5 @@ gitlab.com:
 
 salt-highstate-cron:
   cron.present:
-    - name: salt '*' state.hightstate
+    - name: salt '{{ grains['id'] }}' state.apply roles.salt-master ; salt '*' state.hightstate
     - minute: 0,30
