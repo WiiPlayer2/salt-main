@@ -47,6 +47,12 @@ homeassistant:
     - force_reset: True
     - submodules: True
 
+/home/homeassistant/.homeassistant/secrets.yaml
+  file.managed:
+    - user: homeassistant
+    - group: homeassistant
+    - contents_pillar: hassio_secrets
+
 /srv/homeassistant:
   file.directory:
     - user: homeassistant
