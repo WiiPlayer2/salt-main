@@ -38,6 +38,15 @@ homeassistant:
     - groups:
       - dialout
 
+{{ pillar['git_repo_hassio'] }}:
+  git.latest:
+    - target: /home/homeassistant/.homeassistant
+    - branch: master
+    - user: homeassistant
+    - force_clone: True
+    - force_reset: True
+    - submodules: True
+
 /srv/homeassistant:
   file.directory:
     - user: homeassistant
