@@ -104,7 +104,6 @@ class SixTunnelAAS():
         pid = pid_f.readline()
         pid_f.close()
         run('kill {}'.format(pid))
-        os.remove(file)
 
     def _restart_mapping(self, hash, line):
         try:
