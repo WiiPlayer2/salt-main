@@ -1,0 +1,13 @@
+[Unit]
+Description=6tunnel as a service
+After=network-online.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/6tunnel-aas start
+ExecStop=/usr/bin/6tunnel-aas stop
+ExecReload=/usr/bin/6tunnel-aas reload
+
+[Install]
+WantedBy=multi-user.target

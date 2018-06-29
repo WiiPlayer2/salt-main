@@ -1,3 +1,6 @@
+include:
+  - comps.6tunnel-aas
+
 hassio_packages:
   pkg.installed:
     - pkgs:
@@ -68,3 +71,15 @@ home-assistant:
     - watch_any:
       - module: home-assistant-unit
       - acme: {{ pillar['hassio_fqdn'] }}
+
+home-assistant-map:
+  file.managed:
+    - name: /etc/6tunnel-aas/home-assistant.map
+    - source:
+      - salt://roles/home-automation/home-assistant.map
+
+6tunnel-aas:
+  service.running:
+    - enable: True
+    - watch:
+      - file: home-assistant-map
