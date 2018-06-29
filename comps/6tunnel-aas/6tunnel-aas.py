@@ -82,7 +82,9 @@ class SixTunnelAAS():
     def _start_mapping(self, hash, line):
         if os.path.isfile(hash_path(hash)):
             raise SixTunnelAAS.Error('{0} already exists'.format(hash_path(hash)))
-        os.system('6tunnel {0} -p {1}'.format(line, hash_path(hash)))
+        cmd = '6tunnel {0} -p {1}'.format(line.strip(), hash_path(hash))
+        print(cmd)
+        os.system(cmd)
     
     def _stop_mapping(self, hash):
         if not os.path.isfile(hash_path(hash)):
