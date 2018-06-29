@@ -1,2 +1,2 @@
 -6 -l {{ pillar['hassio_fqdn'] }} 8080 127.0.0.1
--6 -l {{ pillar['hassio_fqdn'] }} 8213 127.0.0.1
+-6 -l {{ pillar['hassio_fqdn'] }} 8123 127.0.0.1
