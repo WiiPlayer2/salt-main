@@ -75,6 +75,7 @@ home-assistant:
 home-assistant-map:
   file.managed:
     - name: /etc/6tunnel-aas/home-assistant.map
+    - template: jinja
     - source:
       - salt://roles/home-automation/home-assistant.map
 
