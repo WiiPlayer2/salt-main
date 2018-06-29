@@ -9,7 +9,7 @@ from enum import Enum
 PID_PATH='/var/run/6tunnel-aas'
 
 def hash_str(obj):
-    return hashlib.sha256(repr(obj)).hexdigest()
+    return hashlib.sha256(repr(obj).encode()).hexdigest()
 
 def hash_path(hash):
     return os.path.join(PID_PATH, '{}.pid'.format(hash))
