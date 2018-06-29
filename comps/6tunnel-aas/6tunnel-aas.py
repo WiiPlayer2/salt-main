@@ -3,12 +3,13 @@
 import argparse
 import os
 import subprocess
+import hashlib
 from enum import Enum
 
 PID_PATH='/var/run/6tunnel-aas'
 
 def hash_str(obj):
-    return format(hash(obj) & 0xffffffff, '00000000X')
+    return hashlib.sha256(repr(obj)).hexdigest()
 
 def hash_path(hash):
     return os.path.join(PID_PATH, '{}.pid'.format(hash))
