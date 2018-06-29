@@ -27,7 +27,7 @@ class SixTunnelAAS():
     def __init__(self):
         self._parser = argparse.ArgumentParser(description='6tunnel as a service')
         self._parser.add_argument('status', type=Status, choices=list(Status))
-        self._parser.add_argument('-c', '--config-folder', default='/etc/6tunnel-aas/')
+        self._parser.add_argument('-c', '--configfolder', default='/etc/6tunnel-aas/')
         self._args = self._parser.parse_args()
         self._read_all_maps()
 
@@ -45,8 +45,8 @@ class SixTunnelAAS():
 
     def _read_all_maps(self):
         self._map = {}
-        for f in os.listdir(self._args.config):
-            map = self._read_map(os.path.join(self._args.config, f))
+        for f in os.listdir(self._args.configfolder):
+            map = self._read_map(os.path.join(self._args.configfolder, f))
             self._map.update(map)
 
     def _read_map(self, path):
