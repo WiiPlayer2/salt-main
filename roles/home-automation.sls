@@ -47,7 +47,7 @@ homeassistant:
     - force_reset: True
     - submodules: True
 
-/home/homeassistant/.homeassistant/secrets.yaml
+/home/homeassistant/.homeassistant/secrets.yaml:
   file.managed:
     - user: homeassistant
     - group: homeassistant
