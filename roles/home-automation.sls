@@ -101,6 +101,7 @@ home-assistant:
     - watch_any:
       - module: home-assistant-unit
       - acme: {{ pillar['hassio_fqdn'] }}
+      - git: {{ pillar['git_repo_hassio'] }}
 
 home-assistant-map:
   file.managed:
