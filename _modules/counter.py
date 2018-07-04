@@ -29,7 +29,7 @@ def set(id, val):
     if not exists(id):
         init(id)
     __grains__[_name][id] = val
-    __salt['grains.set']('{}:{}'.format(_name, id), val)
+    __salt__['grains.set']('{}:{}'.format(_name, id), val)
     return val
 
 #TODO
