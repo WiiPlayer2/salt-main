@@ -6,7 +6,7 @@ ambient-light-packages:
       - python3-serial
   pip.installed:
     - name: paho-mqtt
-    - bin_env: /usr/bin/pip3
+    - bin_env: '/usr/bin/pip3'
     - require:
       - pkg: ambient-light-packages
 
