@@ -10,5 +10,5 @@ $TTL	604800
 @		IN	NS	{{ grains['host'] }}.
 ;
 {% for server, addrs in salt['mine.get']('G@domain:' + grains['domain'], 'network.ip_addrs', 'compound') | dictsort() %}
-{{ salt['mine.get'](server, 'network.get_hostname') }}		IN		A		{{ addrs[0] }}
+{{ salt['mine.get'](server, 'network.get_hostname')[server] }}		IN		A		{{ addrs[0] }}
 {% endfor %}
