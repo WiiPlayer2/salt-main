@@ -28,7 +28,7 @@ ambient-light-unit:
 ambient-light-script:
   file.managed:
     - name: /usr/bin/ambient-light
-    - mode: 774
+    - mode: 755
     - source:
       - salt://roles/ambient-light/ambient-light.py
 
