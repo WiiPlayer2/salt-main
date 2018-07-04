@@ -6,10 +6,10 @@ def __virtual__():
     return __virtualname__
 
 def init(id):
-    if not exists(id):
-        if _name not in __grains__:
-            __grains__[_name] = {}
-        __grains__[_name][id] = 0
+#    if not exists(id):
+#        if _name not in __grains__:
+#            __grains__[_name] = {}
+#        __grains__[_name][id] = 0
     return __salt__['grains.set']('{}:{}'.format(_name, id), 0, True, True)
 #    return 0
 
@@ -26,9 +26,9 @@ def exists(id):
     return True
 
 def set(id, val):
-    if not exists(id):
-        init(id)
-    __grains__[_name][id] = val
+#    if not exists(id):
+#        init(id)
+#    __grains__[_name][id] = val
     return __salt__['grains.set']('{}:{}'.format(_name, id), val, True, True)
 #    return val
 
