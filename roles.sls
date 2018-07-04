@@ -1,5 +1,5 @@
+{%- if 'roles' in grains and len(grains['roles']) > 0 -%}
 include:
-{%- if 'roles' in grains -%}
 {%- for role in grains['roles'] %}
   - roles.{{ role }}
 {% endfor -%}
