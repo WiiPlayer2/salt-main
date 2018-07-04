@@ -1,6 +1,7 @@
 common-tools:
-  pkg.latest:
+  pkg.installed:
     - pkgs:
       - git
       - tmux
       - htop
+      - tree
