@@ -2,7 +2,13 @@ ambient-light-packages:
   pkg.installed:
     - pkgs:
       - python3
+      - python3-pip
       - python3-serial
+  pip.installed:
+    - name: paho-mqtt
+    - bin_env: /usr/bin/pip3
+    - require:
+      - pkg: ambient-light-packages
 
 ambient-light-etc:
   file.directory:
