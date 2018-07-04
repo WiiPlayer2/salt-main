@@ -2,6 +2,7 @@ ambient-light-packages:
   pkg.installed:
     - pkgs:
       - python3
+      - python3-serial
 
 ambient-light-etc:
   file.directory:
