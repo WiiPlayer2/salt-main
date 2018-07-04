@@ -1,7 +1,7 @@
 $ORIGIN	{{ grains['domain'] }}.
 $TTL	604800
 @	IN	SOA	{{ grains['fqdn'] }}. root.{{ grains['fqdn'] }}. (
-		{{ None | strftime('%Y%m%d%H%M%S') }}		; Serial
+		{{ salt['counter.inc']('bind9_db_' + grains['domain']) }}		; Serial
 		604800		; Refresh
 		86400		; Retry
 		2419200		; Expire
