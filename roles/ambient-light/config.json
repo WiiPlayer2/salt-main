@@ -1,0 +1,10 @@
+{
+  "tty_dev": "{{ pillar['ambient-light']['tty_dev'] }}",
+  "mqtt_port": {{ pillar['ambient-light']['mqtt_port'] }},
+  "is_discovered": true,
+  "mqtt_host": "{{ pillar['ambient-light']['mqtt_host'] }}",
+  "mqtt_ha_discovery_prefix": "{{ pillar['ambient-light']['mqtt_ha_discovery_prefix'] }}",
+  "mqtt_hostname": "{{ pillar['ambient-light']['mqtt_hostname'] }}",
+  "mqtt_password": "{{ pillar['ambient-light']['mqtt_password'] }}",
+  "mqtt_user": "{{ pillar['ambient-light']['mqtt_user'] }}"
+}

@@ -1,0 +1,12 @@
+[Unit]
+Description=Ambient Light
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/etc/ambient-light
+User=pi
+ExecStart=/usr/bin/ambient-light
+
+[Install]
+WantedBy=multi-user.target
