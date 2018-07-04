@@ -5,7 +5,7 @@ ambient-light-packages:
 
 ambient-light-etc:
   file.directory:
-    - name: /etc/6tunnel-aas:
+    - name: /etc/ambient-light
     - dir_mode: 755
 
 ambient-light-config:
