@@ -29,6 +29,6 @@ nas-server-nfs-package:
   pkg.installed:
     - name: nfs-kernel-server
 
-{% for export in nas['exports'] }
+{% for export in nas['exports'] %}
 {% endfor %}
 {% endif %}
