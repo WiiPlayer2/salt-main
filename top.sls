@@ -5,3 +5,4 @@ base:
 
   'G@os_family:Debian':
     - cfg.common.debian
+    - cfg.mounts
