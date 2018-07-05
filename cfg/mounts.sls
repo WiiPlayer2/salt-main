@@ -1,5 +1,6 @@
 {% if 'mounts' in pillar %}
-{% for name, data in pillar['mounts'] %}
+{% for name in pillar['mounts'] %}
+{% set data = pillar['mounts'][name] %}
 
 mounts-{{ name }}:
   mount.mounted:
