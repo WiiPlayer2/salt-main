@@ -1,5 +1,7 @@
 {% if 'accounts' in pillar %}
 {% for data in pillar['accounts'] %}
+
+{% if 'passwd' in data %}
 account-{{ data['user'] }}:
   user.present:
     - name: {{ data['user'] }}
@@ -7,5 +9,14 @@ account-{{ data['user'] }}:
 {% if grains['os_family'] != 'Windows' %}
     - hash_password: True
 {% endif %}
+{% endif %}
+
+{% if 'ssh-auth' in data %}
+account-{{ data['user'] }}-ssh-auth:
+  ssh_auth.present:
+    - name: {{ data['ssh-auth'] }}
+    - user: {{ data['user'] }}
+{% endif %}
+
 {% endfor %}
 {% endif %}
