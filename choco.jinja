@@ -1,0 +1,11 @@
+{% macro installed(pkg) %}
+choco-pkg-{{ pkg }}:
+  chocolatey.installed:
+    - name: {{ pkg }}
+{% endmacro %}
+
+{% macro upgraded(pkg) %}
+choco-pkg-{{ pkg }}:
+  chocolatey.upgraded:
+    - name: {{ pkg }}
+{% endfor %}
