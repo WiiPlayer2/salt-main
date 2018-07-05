@@ -5,9 +5,10 @@
 account-{{ data['user'] }}:
   user.present:
     - name: {{ data['user'] }}
-    - password: {{ data['passwd'] }}
 {% if grains['os_family'] != 'Windows' %}
-    - hash_password: True
+    - password: {{ salt['cmd.run']("openssl passwd -1 pass:{{ data['passwd'] }}") }}
+{% else %}
+    - password: {{ data['passwd'] }}
 {% endif %}
 {% endif %}
 
