@@ -5,7 +5,7 @@ After=network-online.target
 [Service]
 Type=simple
 WorkingDirectory=/etc/ambient-light
-User=pi
+User=root
 ExecStart=/usr/bin/ambient-light
 
 [Install]
