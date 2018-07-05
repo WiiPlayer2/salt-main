@@ -1,0 +1,14 @@
+$ORIGIN	{{ grains['domain'] }}.
+$TTL	604800
+@	IN	SOA	{{ grains['fqdn'] }}. root.{{ grains['fqdn'] }}. (
+		__SERIAL__		; Serial
+		604800		; Refresh
+		86400		; Retry
+		2419200		; Expire
+		604800	)	; Negative Cache TTL
+;
+@		IN	NS	{{ grains['host'] }}.
+;
+{% for server, addrs in salt['mine.get']('G@domain:' + grains['domain'], 'network.ip_addrs', 'compound') | dictsort() -%}
+{{ salt['mine.get'](server, 'network.get_hostname')[server] }}		IN		A		{{ addrs[0] }}
+{% endfor %}
