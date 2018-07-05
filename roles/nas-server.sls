@@ -16,7 +16,7 @@ nas-server-samba-conf:
 
 nas-server-samba-service:
   service.running:
-    - name: samba
+    - name: smbd
     - enable: True
     - watch:
       - file: nas-server-samba-conf
