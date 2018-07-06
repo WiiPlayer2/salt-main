@@ -5,3 +5,5 @@ common-tools:
       - tmux
       - htop
       - tree
+      - python3
+      - python3-pip

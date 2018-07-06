@@ -21,6 +21,8 @@ common-windows-choco-bootstrap:
 {{ upgraded('streamlink') }}
 {{ upgraded('git') }}
 {{ upgraded('sudo') }}
+{{ upgraded('windirstat') }}
+{{ upgraded('gitextensions') }}
 
 {{ installed('Firefox') }}
 {{ installed('discord') }}
