@@ -1,6 +1,6 @@
 common-windows-choco-bootstrap:
   module.run:
-    - func: chocolatey.bootstrap
+    - name: chocolatey.bootstrap
 
 {% from 'choco.jinja' import installed, upgraded %}
 
