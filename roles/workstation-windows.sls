@@ -9,6 +9,7 @@
 {% else %}
 {{ installed(pkg) }}
 {% endif %}
+{% endif %}
 {% endmacro %}
 
 {{ check('x2go', True) }}
