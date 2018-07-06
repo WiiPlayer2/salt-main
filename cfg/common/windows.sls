@@ -5,7 +5,23 @@ common-windows-choco-bootstrap:
 {% from 'choco.jinja' import installed, upgraded %}
 
 {{ upgraded('chocolatey') }}
+{{ upgraded('keepass') }}
+{{ upgraded('keepass-plugin-quickunlock') }}
+{{ upgraded('keepass-plugin-keeagent') }}
+{{ upgraded('keepass-plugin-traytotp') }}
+{{ upgraded('vlc') }}
+{{ upgraded('winscp') }}
+{{ upgraded('putty') }}
+{{ upgraded('flashplayerplugin') }}
+{{ upgraded('flashplayerppapi') }}
+{{ upgraded('openvpn') }}
+{{ upgraded('XnViewMP') }}
+{{ upgraded('visualstudiocode') }}
+{{ upgraded('7zip') }}
+{{ upgraded('streamlink') }}
+{{ upgraded('git') }}
+{{ upgraded('sudo') }}
 
-{{ installed('git') }}
-{{ installed('sudo') }}
-{{ installed('7zip') }}
+{{ installed('Firefox') }}
+{{ installed('discord') }}
+{{ installed('telegram') }}
