@@ -8,26 +8,26 @@ common-windows-choco-bootstrap:
 
 {% from 'choco.jinja' import installed, upgraded %}
 
+{{ upgraded('7zip') }}
 {{ upgraded('chocolatey') }}
-{{ upgraded('keepass') }}
-{{ upgraded('keepass-plugin-quickunlock') }}
-{{ upgraded('keepass-plugin-keeagent') }}
-{{ upgraded('keepass-plugin-traytotp') }}
-{{ upgraded('vlc') }}
-{{ upgraded('winscp') }}
-{{ upgraded('putty') }}
 {{ upgraded('flashplayerplugin') }}
 {{ upgraded('flashplayerppapi') }}
+{{ upgraded('git') }}
+{{ upgraded('gitextensions') }}
+{{ upgraded('keepass') }}
+{{ upgraded('keepass-plugin-keeagent') }}
+{{ upgraded('keepass-plugin-quickunlock') }}
+{{ upgraded('keepass-plugin-traytotp') }}
 # openvpn packages seems to be broken
 #{# {{ upgraded('openvpn') }} #}
-{{ upgraded('XnViewMP') }}
-{{ upgraded('visualstudiocode') }}
-{{ upgraded('7zip') }}
+{{ upgraded('putty') }}
 {{ upgraded('streamlink') }}
-{{ upgraded('git') }}
 {{ upgraded('sudo') }}
+{{ upgraded('visualstudiocode') }}
+{{ upgraded('vlc') }}
 {{ upgraded('windirstat') }}
-{{ upgraded('gitextensions') }}
+{{ upgraded('winscp') }}
+{{ upgraded('XnViewMP') }}
 
 {{ installed('Firefox') }}
 {{ installed('discord') }}
