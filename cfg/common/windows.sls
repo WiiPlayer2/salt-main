@@ -17,7 +17,7 @@ common-windows-powershell-executionpolicy:
 
 {% if 'users' in data %}
 
-{% set users = data['users'] or [] }
+{% set users = data['users'] or [] %}
 {% for user in users %}
 {% set user_id = grains['user_ids'][user] %}
 
