@@ -18,7 +18,8 @@ common-windows-choco-bootstrap:
 {{ upgraded('putty') }}
 {{ upgraded('flashplayerplugin') }}
 {{ upgraded('flashplayerppapi') }}
-{{ upgraded('openvpn') }}
+# openvpn packages seems to be broken
+#{# {{ upgraded('openvpn') }} #}
 {{ upgraded('XnViewMP') }}
 {{ upgraded('visualstudiocode') }}
 {{ upgraded('7zip') }}
