@@ -21,7 +21,6 @@
 {{ check('ilspy', True) }}
 {{ check('inkscape', True) }}
 {{ check('javaruntime', True) }}
-{{ check('miktex', True) }}
 {{ check('obs-studio-wiiplayer2-scripts', True) }}
 {{ check('obs-studio', True) }}
 {{ check('pidgin', True) }}
@@ -33,6 +32,7 @@
 {{ check('x2go', True) }}
 
 {{ check('dropbox') }}
+{{ check('miktex') }}
 {{ check('Office365ProPlus') }}
 {{ check('sharex') }}
 {{ check('unity') }}
