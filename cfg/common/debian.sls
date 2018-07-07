@@ -7,3 +7,5 @@ common-tools:
       - tree
       - python3
       - python3-pip
+      - nmap
+      - lsof
