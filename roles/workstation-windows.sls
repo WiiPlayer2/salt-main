@@ -1,6 +1,8 @@
 {% from 'choco.jinja' import installed, upgraded %}
 {% set data = pillar['workstation'] if 'workstation' in pillar else {} %}
+{% set data = data or {} %}
 {% set comps = data['packages'] if 'packages' in data else {} %}
+{% set comps = comps or {} %}
 
 {% macro check(pkg, latest=False) %}
 {% if pkg not in comps or comps[pkg] %}
