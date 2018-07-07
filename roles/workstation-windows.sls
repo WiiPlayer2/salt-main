@@ -23,9 +23,11 @@
 {{ check('ilspy', True) }}
 {{ check('inkscape', True) }}
 {{ check('javaruntime', True) }}
+{{ check('krita', True) }}
 {{ check('obs-studio-wiiplayer2-scripts', True) }}
 {{ check('obs-studio', True) }}
 {{ check('pidgin', True) }}
+{{ check('python3', True) }}
 {{ check('teamviewer', True) }}
 {{ check('texstudio', True) }}
 {{ check('virtualbox', True) }}
@@ -34,6 +36,7 @@
 {{ check('x2go', True) }}
 
 {{ check('dropbox') }}
+{{ check('GoogleChrome') }}
 {{ check('miktex') }}
 {{ check('Office365ProPlus') }}
 {{ check('sharex') }}
