@@ -21,28 +21,28 @@ common-windows-powershell-executionpolicy:
 {% for user in users %}
 {% set user_id = grains['user_ids'][user] %}
 
-commmon-windows-{{ user }}-hidden-files
+commmon-windows-{{ user }}-hidden-files:
   reg.present:
     - name: 'HKU\\{{ user_id }}\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced'
     - vname: Hidden
     - vdata: 1
     - vtype: REG_DWORD
 
-commmon-windows-{{ user }}-file-extensions
+commmon-windows-{{ user }}-file-extensions:
   reg.present:
     - name: 'HKU\\{{ user_id }}\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced'
     - vname: HideFileExt
     - vdata: 0
     - vtype: REG_DWORD
 
-commmon-windows-{{ user }}-explorer-launch
+commmon-windows-{{ user }}-explorer-launch:
   reg.present:
     - name: 'HKU\\{{ user_id }}\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced'
     - vname: LaunchTo
     - vdata: 1
     - vtype: REG_DWORD
 
-commmon-windows-{{ user }}-mouse-acceleration
+commmon-windows-{{ user }}-mouse-acceleration:
   reg.present:
     - name: 'HKU\\{{ user_id }}\\Control Panel\\Mouse'
     - vname: MouseSpeed
