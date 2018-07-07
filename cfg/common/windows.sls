@@ -1,6 +1,10 @@
 common-windows-choco-bootstrap:
   module.run:
     - name: chocolatey.bootstrap
+  win_path.exists:
+    - name: 'C:\ProgramData\chocolatey\bin'
+    - require:
+      - module: common-windows-choco-bootstrap
 
 {% from 'choco.jinja' import installed, upgraded %}
 
