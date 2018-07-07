@@ -23,28 +23,28 @@ common-windows-powershell-executionpolicy:
 
 commmon-windows-{{ user }}-hidden-files:
   reg.present:
-    - name: 'HKU\\{{ user_id }}\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced'
+    - name: 'HKU\{{ user_id }}\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced'
     - vname: Hidden
     - vdata: 1
     - vtype: REG_DWORD
 
 commmon-windows-{{ user }}-file-extensions:
   reg.present:
-    - name: 'HKU\\{{ user_id }}\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced'
+    - name: 'HKU\{{ user_id }}\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced'
     - vname: HideFileExt
     - vdata: 0
     - vtype: REG_DWORD
 
 commmon-windows-{{ user }}-explorer-launch:
   reg.present:
-    - name: 'HKU\\{{ user_id }}\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced'
+    - name: 'HKU\{{ user_id }}\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced'
     - vname: LaunchTo
     - vdata: 1
     - vtype: REG_DWORD
 
 commmon-windows-{{ user }}-mouse-acceleration:
   reg.present:
-    - name: 'HKU\\{{ user_id }}\\Control Panel\\Mouse'
+    - name: 'HKU\{{ user_id }}\Control Panel\Mouse'
     - vname: MouseSpeed
     - vdata: 0
     - vtype: REG_DWORD
