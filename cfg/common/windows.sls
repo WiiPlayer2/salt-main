@@ -58,6 +58,7 @@ commmon-windows-{{ user }}-mouse-acceleration:
 {{ upgraded('flashplayerppapi') }}
 {{ upgraded('git') }}
 {{ upgraded('gitextensions') }}
+{{ upgraded('kdiff3') }}
 {{ upgraded('keepass') }}
 {{ upgraded('keepass-plugin-keeagent') }}
 {{ upgraded('keepass-plugin-quickunlock') }}
