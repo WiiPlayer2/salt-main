@@ -61,6 +61,7 @@ commmon-windows-{{ user }}-mouse-acceleration:
 {{ upgraded('kdiff3') }}
 {{ upgraded('keepass') }}
 {{ upgraded('keepass-plugin-keeagent') }}
+{{ upgraded('keepass-plugin-kpscript') }}
 {{ upgraded('keepass-plugin-quickunlock') }}
 {{ upgraded('keepass-plugin-traytotp') }}
 # openvpn packages seems to be broken
