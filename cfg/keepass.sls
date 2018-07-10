@@ -7,7 +7,7 @@
   xml.set:
     - name: {{ path }}
     - file: {{ config }}
-    - value: {{ value }}
+    - value: '{{ value }}'
 {% endmacro %}
 
 {{ cfg('Application/Start/MinimizedAndLocked', 'true') }}

@@ -8,7 +8,23 @@ lock = threading.Lock()
 def __virtual__():
     return __virtualname__
 
-def set(name, file, value):
+def _ensure_path(root, path):
+    try:
+        splits = path.split('/')
+
+        def _recurse(node, names):
+            if len(names) == 0:
+                return node
+            next_node = node.find(names[0])
+            if next_node == None:
+                next_node = ET.SubElement(node, names[0])
+            return _recurse(next_node, names[1:])
+        
+        return _recurse(root, splits)
+    except:
+        return None
+
+def set(name, file, value, path = None):
     ret = {'name': name,
        'result': False,
        'changes': {},
@@ -22,8 +38,16 @@ def set(name, file, value):
 
     try:
         tree = ET.parse(file)
-        node = tree.find(name)
-        
+
+        node = None
+        if path is not None:
+            node = _ensure_path(tree.getroot(), path)
+        else:
+            node = _ensure_path(tree.getroot(), name)
+
+        if node is None:
+            node = tree.find(name)
+
         if node == None:
             ret['result'] = False
             ret['comment'] = 'Value \'{}\' of file \'{}\' was not found'.format(name, file)
