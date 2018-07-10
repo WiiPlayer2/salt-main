@@ -14,6 +14,12 @@
 {% endif %}
 {% endmacro %}
 
+{% macro cfg(pkg) %}
+{% if pkg not in comps or comps[pkg] %}
+{{ caller() }}
+{% endif %}
+{% endmacro %}
+
 {{ check('adobereader', True) }}
 {{ check('cmake', True) }}
 {{ check('crystaldiskinfo', True) }}
@@ -51,3 +57,8 @@
 {{ check('visualstudio2017-workload-universal') }}
 {{ check('visualstudio2017-workload-visualstudioextension') }}
 {{ check('visualstudio2017-workload-webcrossplat') }}
+
+include:
+{% call cfg('keepass') %}
+  - cfg.keepass
+{% endcall %}
