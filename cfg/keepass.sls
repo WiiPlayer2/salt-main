@@ -11,6 +11,7 @@
 {% endmacro %}
 
 {{ cfg('Application/Start/MinimizedAndLocked', 'true') }}
+{#
 {{ cfg('Application/FileClosing/AutoSave', 'true') }}
 {{ cfg('MainWindow/CloseButtonMinimizesWindow', 'true') }}
 {{ cfg('MainWindow/EscMinimizesToTray', 'true') }}
@@ -25,5 +26,6 @@
 {{ cfg("Custom/Item[Key='KeeAgent.ShowBalloon']/Value", 'true') }}
 {{ cfg("Custom/Item[Key='KeeAgent.UnlockOnActivity']/Value", 'true') }}
 {{ cfg("Custom/Item[Key='KeeAgent.UserPicksKeyOnRequestIdentities']/Value", 'false') }}
+#}
 
 {% endif %}
