@@ -4,15 +4,16 @@ import threading
 import xml.etree.ElementTree as ET
 
 __virtualname__ = 'xml'
-lock = threading.Lock()
+_lock = threading.Lock()
 
-regex = r"^(:|[A-Z]|[a-z]|[\xC0-\xD6]|[\xD8-\xF6]|[\xF8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD])(:|[A-Z]|[a-z]|[\xC0-\xD6]|[\xD8-\xF6]|[\xF8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|-|.|[0-9]|\xB7|[\u0300-\u036F]|[\u203F-\u2040])*$"
+#_name_regex = r"^(:|[A-Z]|[a-z]|[\xC0-\xD6]|[\xD8-\xF6]|[\xF8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD])(:|[A-Z]|[a-z]|[\xC0-\xD6]|[\xD8-\xF6]|[\xF8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|-|.|[0-9]|\xB7|[\u0300-\u036F]|[\u203F-\u2040])*$"
+_name_regex = r"^[A-z_]([0-9A-z\-_\.])*$"
 
 def __virtual__():
     return __virtualname__
 
 def _is_valid_name(name):
-    return re.fullmatch(regex, name) is not None
+    return re.fullmatch(_name_regex, name) is not None
 
 def _ensure_path(root, path):
     try:
@@ -43,7 +44,7 @@ def set(name, file, value, path = None):
         ret['comment'] = '\'{}\' does not exist or isn\'t a file'.format(file)
         return ret
     
-    lock.acquire()
+    _lock.acquire()
 
     try:
         tree = ET.parse(file)
