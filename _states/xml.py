@@ -94,4 +94,4 @@ def set(name, file, value, path = None):
         }
         return ret
     finally:
-        lock.release()
+        _lock.release()
