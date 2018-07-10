@@ -3,7 +3,7 @@
 {% set config = data['config'] %}
 
 {% macro cfg(path, value) %}
-'keepass-cfg-{{ path }}':
+"keepass-cfg-{{ path }}":
   xml.set:
     name: {{ path }}
     file: {{ config }}
