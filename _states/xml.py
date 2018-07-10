@@ -1,5 +1,5 @@
 import os
-import xml.etree.ElementTree
+import xml.etree.ElementTree as ET
 
 __virtualname__ = 'xml'
 
@@ -16,7 +16,7 @@ def set(name, file, value):
         ret['comment'] = '\'{}\' does not exist or isn\'t a file'.format(file)
         return ret
     
-    tree = ElementTree.parse(file)
+    tree = ET.parse(file)
     node = tree.find(name)
     
     if node == None:
