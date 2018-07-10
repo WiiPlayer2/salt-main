@@ -1,12 +1,18 @@
 import os
-import xml.etree.ElementTree as ET
+import re
 import threading
+import xml.etree.ElementTree as ET
 
 __virtualname__ = 'xml'
 lock = threading.Lock()
 
+regex = r"^(:|[A-Z]|[a-z]|[\xC0-\xD6]|[\xD8-\xF6]|[\xF8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD])(:|[A-Z]|[a-z]|[\xC0-\xD6]|[\xD8-\xF6]|[\xF8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|-|.|[0-9]|\xB7|[\u0300-\u036F]|[\u203F-\u2040])*$"
+
 def __virtual__():
     return __virtualname__
+
+def _is_valid_name(name):
+    return re.fullmatch(regex, name) is not None
 
 def _ensure_path(root, path):
     try:
@@ -15,11 +21,14 @@ def _ensure_path(root, path):
         def _recurse(node, names):
             if len(names) == 0:
                 return node
+            if not _is_valid_name(names[0]):
+                return None
+
             next_node = node.find(names[0])
             if next_node == None:
                 next_node = ET.SubElement(node, names[0])
             return _recurse(next_node, names[1:])
-        
+
         return _recurse(root, splits)
     except:
         return None
