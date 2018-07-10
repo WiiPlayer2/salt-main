@@ -40,7 +40,7 @@ def set(name, file, value):
             return ret
         
         old_value = node.text
-        node.text = value
+        node.text = str(value)
         tree.write(file)
 
         ret['result'] = True
