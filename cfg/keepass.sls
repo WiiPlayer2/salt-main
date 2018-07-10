@@ -5,9 +5,9 @@
 {% macro cfg(path, value) %}
 "keepass-cfg-{{ path }}":
   xml.set:
-    name: {{ path }}
-    file: {{ config }}
-    value: {{ value }}
+    - name: {{ path }}
+    - file: {{ config }}
+    - value: {{ value }}
 {% endmacro %}
 
 {{ cfg('Application/Start/MinimizedAndLocked', 'true') }}
