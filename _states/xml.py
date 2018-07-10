@@ -6,6 +6,8 @@ import xml.etree.ElementTree as ET
 __virtualname__ = 'xml'
 _lock = threading.Lock()
 
+log = logging.getLogger(__name__)
+
 #_name_regex = r"^(:|[A-Z]|[a-z]|[\xC0-\xD6]|[\xD8-\xF6]|[\xF8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD])(:|[A-Z]|[a-z]|[\xC0-\xD6]|[\xD8-\xF6]|[\xF8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|-|.|[0-9]|\xB7|[\u0300-\u036F]|[\u203F-\u2040])*$"
 _name_regex = r"^[A-z_]([0-9A-z\-_\.])*$"
 
@@ -20,6 +22,8 @@ def _ensure_path(root, path):
         splits = path.split('/')
 
         def _recurse(node, names):
+            log.debug('Recursive ensuring path ({}, {})', node, names)
+
             if len(names) == 0:
                 return node
             if not _is_valid_name(names[0]):
@@ -31,7 +35,8 @@ def _ensure_path(root, path):
             return _recurse(next_node, names[1:])
 
         return _recurse(root, splits)
-    except:
+    except Exception:
+        log.exception('Failed ensuring path')
         return None
 
 def set(name, file, value, path = None):
