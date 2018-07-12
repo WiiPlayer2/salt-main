@@ -18,6 +18,6 @@ pkg-repository-{{ name }}:
     - name: {{ repo }}
     - file: /etc/apt/sources.list.d/{{ name }}.list
     - key_url: salt://cfg/apt/repos/{{ gpg }}.gpg
-    - require:
-      - file: pkg-repository-{{ name }}-list
+#    - require:
+#      - file: pkg-repository-{{ name }}-list
 {% endmacro %}
