@@ -77,6 +77,7 @@ gitlab.com-homeassistant:
   virtualenv.managed:
     - venv_bin: pyvenv
     - user: homeassistant
+    - pip_upgrade: True
     - pip_pkgs:
       - wheel
       - homeassistant
