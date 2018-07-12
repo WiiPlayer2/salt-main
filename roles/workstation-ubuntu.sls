@@ -61,11 +61,11 @@ workstation-pkg-{{ pkg }}:
 {% call cfg('keepass') %}
 {{ ppa_present('keepass-plugins', 'dlech/keepass2-plugins') }}
 {{ check('keepass2', True) }}
-{# {{ check('keepass2-plugin-application-indicator', True) }} #}
+{{ check('keepass2-plugin-application-indicator', True) }}
 {{ check('keepass2-plugin-keeagent', True) }}
 {{ check('keepass2-plugin-keepasshttp', True) }}
 {{ check('keepass2-plugin-launcher', True) }}
-{{ check('keepass2-plugin-tray-icon', True) }}
+{# {{ check('keepass2-plugin-tray-icon', True) }} #}
 {% endcall %}
 
 {% call cfg('texlive') %}
