@@ -6,9 +6,18 @@ pkg-repository-{{ name }}:
 
 {% macro repo_data(name, repo, gpg=None) %}
 {% set gpg = gpg or name %}
+pkg-repository-{{ name }}-list:
+  file.managed:
+    - name: /etc/apt/source.list.d/{{ name }}.list
+    - replace: False
+    - contents:
+      - {{ repo }}
+
 pkg-repository-{{ name }}:
   pkgrepo.managed:
     - name: {{ repo }}
     - file: /etc/apt/source.list.d/{{ name }}.list
     - key_url: salt://cfg/apt/repos/{{ gpg }}.gpg
+    - require:
+      - file: pkg-repository-{{ name }}-list
 {% endmacro %}

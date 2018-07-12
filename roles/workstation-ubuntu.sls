@@ -10,14 +10,14 @@
 workstation-pkg-{{ pkg }}:
   pkg.latest:
     - name: {{ pkg }}
-{% if local != None %}
-    - sources:
-      - {{ local }}
-{% endif %}
 {% else %}
 workstation-pkg-{{ pkg }}:
   pkg.installed:
     - name: {{ pkg }}
+{% if local != None %}
+    - sources:
+      - {{ local }}
+{% endif %}
 {% endif %}
 {% endif %}
 {% endmacro %}
