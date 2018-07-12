@@ -46,7 +46,7 @@ def set(name, file, value, path = None):
        'changes': {},
        'comment': ''}
     
-    log.debug('set({}, {}, {})', name, file, value)
+    log.debug('set({}, {}, {})', repr(name), repr(file), repr(value))
 
     if not (os.path.exists(file) and os.path.isfile(file)):
         ret['comment'] = '\'{}\' does not exist or isn\'t a file'.format(file)
@@ -94,5 +94,7 @@ def set(name, file, value, path = None):
             }
         }
         return ret
+    except Exception:
+        log.exception('Failed setting value')
     finally:
         _lock.release()
