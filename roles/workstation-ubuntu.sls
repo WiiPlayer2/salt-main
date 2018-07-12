@@ -66,6 +66,7 @@ workstation-pkg-{{ pkg }}:
 {{ check('keepass2-plugin-keepasshttp', True) }}
 {{ check('keepass2-plugin-launcher', True) }}
 {# {{ check('keepass2-plugin-tray-icon', True) }} #}
+{% include 'cfg/keepass.sls' %}
 {% endcall %}
 
 {% call cfg('texlive') %}
