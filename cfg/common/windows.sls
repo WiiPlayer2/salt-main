@@ -16,11 +16,9 @@ common-windows-powershell-executionpolicy:
     - shell: powershell
 
 {% if 'users' in data %}
-
 {% set users = data['users'] or [] %}
 {% for user in users %}
 {% set user_id = grains['user_ids'][user] %}
-
 commmon-windows-{{ user }}-hidden-files:
   reg.present:
     - name: 'HKU\{{ user_id }}\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced'
@@ -48,7 +46,15 @@ commmon-windows-{{ user }}-mouse-acceleration:
     - vname: MouseSpeed
     - vdata: 0
     - vtype: REG_DWORD
+{% endfor %}
+{% endif %}
 
+{% if 'paths' in data %}
+{% set paths = data['paths'] or [] %}
+{% for path in paths %}
+'common-windows-path-{{ path }}':
+  win_path.exists:
+    - name: {{ path }}
 {% endfor %}
 {% endif %}
 
