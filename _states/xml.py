@@ -23,7 +23,7 @@ def _ensure_path(root, path):
         splits = path.split('/')
 
         def _recurse(node, names):
-            log.debug('Recursive ensuring path ({}, {})', node, names)
+            log.debug('Recursive ensuring path ({}, {})'.format(node, names))
 
             if len(names) == 0:
                 return node
@@ -46,7 +46,7 @@ def set(name, file, value, path = None):
        'changes': {},
        'comment': ''}
     
-    log.debug('set({}, {}, {})', repr(name), repr(file), repr(value))
+    log.debug('set({}, {}, {})'.format(name, file, value))
 
     if not (os.path.exists(file) and os.path.isfile(file)):
         ret['comment'] = '\'{}\' does not exist or isn\'t a file'.format(file)
