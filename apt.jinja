@@ -1,0 +1,14 @@
+{% macro ppa_present(name, repo) %}
+pkg-repository-{{ name }}:
+  pkgrepo.managed:
+    - ppa: {{ repo }}
+{% endmacro %}
+
+{% macro repo_data(name, repo, gpg=None) %}
+{% set gpg = gpg or name %}
+pkg-repository-{{ name }}:
+  pkgrepo.managed:
+    - name: {{ repo }}
+    - file: /etc/apt/source.list.d/{{ name }}.list
+    - key_url: salt://cfg/apt/repos/{{ gpg }}.gpg
+{% endmacro %}

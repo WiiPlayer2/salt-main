@@ -20,4 +20,6 @@ base:
     - roles.ambient-light
   'G@roles:workstation and G@os_family:Windows':
     - roles.workstation-windows
+  'G@roles:workstation and G@os_family:Ubuntu':
+    - roles.workstation-ubuntu
 
