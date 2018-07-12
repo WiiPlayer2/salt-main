@@ -16,7 +16,7 @@ workstation-pkg-{{ pkg }}:
     - name: {{ pkg }}
 {% if local != None %}
     - sources:
-      - {{ local }}
+      - {{ pkg }}: {{ local }}
 {% endif %}
 {% endif %}
 {% endif %}
