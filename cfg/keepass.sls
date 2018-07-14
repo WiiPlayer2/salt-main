@@ -43,9 +43,9 @@
 {% if ssh_auth != None %}
 keepass-env-ssh-auth:
   environ.setenv:
-    name: SSH_AUTH_SOCK
-    value: {{ ssh_auth }}
-    permanent: HKLM
+    - name: SSH_AUTH_SOCK
+    - value: {{ ssh_auth }}
+    - permanent: HKLM
 {% endif %}
 
 {% endif %}
