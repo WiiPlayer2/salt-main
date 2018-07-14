@@ -26,4 +26,28 @@
 {{ cfg("Custom/Item[Key='KeeAgent.UnlockOnActivity']/Value", 'true') }}
 {{ cfg("Custom/Item[Key='KeeAgent.UserPicksKeyOnRequestIdentities']/Value", 'false') }}
 
+{% if grains['os_family'] == 'Windows' %}
+
+{% set ssh_auth = None %}
+{% if 'msys' in data %}
+{% set ssh_auth = data['msys'] %}
+{{ cfg("Custom/Item[Key='KeeAgent.UseMsysSocket']/Value", 'true') }}
+{{ cfg("Custom/Item[Key='KeeAgent.MsysSocketPath']/Value", data['msys']) }}
+{% endif %}
+{% if 'cygwin' in data %}
+{% set ssh_auth = data['cygwin'] %}
+{{ cfg("Custom/Item[Key='KeeAgent.UseCygwinSocket']/Value", 'true') }}
+{{ cfg("Custom/Item[Key='KeeAgent.CygwinSocketPath']/Value", data['cygwin']) }}
+{% endif %}
+
+{% if ssh_auth != None %}
+keepass-env-ssh-auth:
+  environ.setenv:
+    name: SSH_AUTH_SOCK
+    value: {{ ssh_auth }}
+    permanent: HKLM
+{% endif %}
+
+{% endif %}
+
 {% endif %}

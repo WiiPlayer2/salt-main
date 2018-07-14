@@ -59,6 +59,5 @@
 {{ check('visualstudio2017-workload-webcrossplat') }}
 
 {% call cfg('keepass') %}
-include:
-  - cfg.keepass
+{% include 'cfg/keepass.sls' %}
 {% endcall %}
