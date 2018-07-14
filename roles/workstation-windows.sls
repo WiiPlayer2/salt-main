@@ -34,6 +34,7 @@
 {{ check('obs-studio', True) }}
 {{ check('pidgin', True) }}
 {{ check('python3', True) }}
+{{ check('resilio-sync-home', True) }}
 {{ check('teamviewer', True) }}
 {{ check('texstudio', True) }}
 {{ check('virtualbox', True) }}
