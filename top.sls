@@ -22,4 +22,6 @@ base:
     - roles.workstation-windows
   'G@roles:workstation and G@os:Ubuntu':
     - roles.workstation-ubuntu
+  'G@roles:gaming and G@os_family:Windows':
+    - roles.gaming-windows
 

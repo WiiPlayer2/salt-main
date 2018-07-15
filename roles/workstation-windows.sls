@@ -1,24 +1,8 @@
-{% from 'choco.jinja' import installed, upgraded %}
+{% from 'choco.jinja' import installed, upgraded, check, cfg %}
 {% set data = pillar['workstation'] if 'workstation' in pillar else {} %}
 {% set data = data or {} %}
 {% set comps = data['packages'] if 'packages' in data else {} %}
 {% set comps = comps or {} %}
-
-{% macro check(pkg, latest=False) %}
-{% if pkg not in comps or comps[pkg] %}
-{% if latest %}
-{{ upgraded(pkg) }}
-{% else %}
-{{ installed(pkg) }}
-{% endif %}
-{% endif %}
-{% endmacro %}
-
-{% macro cfg(pkg) %}
-{% if pkg not in comps or comps[pkg] %}
-{{ caller() }}
-{% endif %}
-{% endmacro %}
 
 {{ check('adobereader', True) }}
 {{ check('cmake', True) }}
@@ -34,7 +18,6 @@
 {{ check('obs-studio', True) }}
 {{ check('pidgin', True) }}
 {{ check('python3', True) }}
-{{ check('resilio-sync-home', True) }}
 {{ check('teamviewer', True) }}
 {{ check('texstudio', True) }}
 {{ check('virtualbox', True) }}
@@ -46,6 +29,7 @@
 {{ check('GoogleChrome') }}
 {{ check('miktex') }}
 {{ check('Office365ProPlus') }}
+{{ check('resilio-sync-home') }}
 {{ check('sharex') }}
 {{ check('unity') }}
 {{ check('visualstudio2017enterprise') }}
