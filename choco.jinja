@@ -9,19 +9,3 @@ choco-pkg-{{ pkg }}:
   chocolatey.upgraded:
     - name: {{ pkg }}
 {% endmacro %}
-
-{% macro check(pkg, latest=False) %}
-{% if pkg not in comps or comps[pkg] %}
-{% if latest %}
-{{ upgraded(pkg) }}
-{% else %}
-{{ installed(pkg) }}
-{% endif %}
-{% endif %}
-{% endmacro %}
-
-{% macro cfg(pkg) %}
-{% if pkg not in comps or comps[pkg] %}
-{{ caller() }}
-{% endif %}
-{% endmacro %}

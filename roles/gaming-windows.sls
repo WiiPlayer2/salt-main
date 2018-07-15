@@ -4,6 +4,22 @@
 {% set comps = data['packages'] if 'packages' in data else {} %}
 {% set comps = comps or {} %}
 
+{% macro check(pkg, latest=False) %}
+{% if pkg not in comps or comps[pkg] %}
+{% if latest %}
+{{ upgraded(pkg) }}
+{% else %}
+{{ installed(pkg) }}
+{% endif %}
+{% endif %}
+{% endmacro %}
+
+{% macro cfg(pkg) %}
+{% if pkg not in comps or comps[pkg] %}
+{{ caller() }}
+{% endif %}
+{% endmacro %}
+
 {{ check('logitechgaming', True) }}
 {{ check('gamesavemanager', True) }}
 
