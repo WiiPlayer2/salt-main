@@ -4,8 +4,8 @@
 {% set comps = data['packages'] if 'packages' in data else {} %}
 {% set comps = comps or {} %}
 
-{{ cfg('logitechgaming', True) }}
-{{ cfg('gamesavemanager', True) }}
+{{ check('logitechgaming', True) }}
+{{ check('gamesavemanager', True) }}
 
-{{ cfg('geforce-experience') }}
-{{ cfg('geforce-game-ready-driver') }}
+{{ check('geforce-experience') }}
+{{ check('geforce-game-ready-driver') }}
