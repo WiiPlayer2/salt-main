@@ -23,5 +23,5 @@
 {{ check('logitechgaming', True) }}
 {{ check('gamesavemanager', True) }}
 
-{{ check('geforce-experience') }}
 {{ check('geforce-game-ready-driver') }}
+{{ check('geforce-experience') }}
