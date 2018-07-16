@@ -39,7 +39,7 @@
 {{ check('texstudio', True) }}
 {{ check('virtualbox', True) }}
 {{ check('vmware-workstation-player', True) }}
-{{ check('wincdemu', True) }}
+{# {{ check('wincdemu', True) }} #} # Unable to install
 {{ check('x2go', True) }}
 
 {{ check('dropbox') }}
