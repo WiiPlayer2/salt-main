@@ -70,8 +70,8 @@ commmon-windows-{{ user }}-mouse-acceleration:
 {{ upgraded('keepass-plugin-kpscript') }}
 {{ upgraded('keepass-plugin-quickunlock') }}
 {{ upgraded('keepass-plugin-traytotp') }}
-# openvpn packages seems to be broken
-#{# {{ upgraded('openvpn') }} #}
+{# {{ upgraded('openvpn') }} #} # openvpn packages seems to be broken
+
 {{ upgraded('putty') }}
 {{ upgraded('streamlink') }}
 {{ upgraded('sudo') }}
@@ -82,5 +82,5 @@ commmon-windows-{{ user }}-mouse-acceleration:
 {{ upgraded('XnViewMP') }}
 
 {{ installed('Firefox') }}
-{{ installed('discord') }}
+{# {{ installed('discord') }} #} # Disabled because of install problems as SYSTEM
 {{ installed('telegram') }}
