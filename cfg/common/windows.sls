@@ -83,4 +83,4 @@ commmon-windows-{{ user }}-mouse-acceleration:
 
 {{ installed('Firefox') }}
 {# {{ installed('discord') }} #} # Disabled because of install problems as SYSTEM
-{{ installed('telegram') }}
+{# {{ installed('telegram') }} #} # Disabled because it installs to AppData
