@@ -28,6 +28,7 @@
 {{ check('HxD', True) }}
 {{ check('ilspy', True) }}
 {{ check('inkscape', True) }}
+{{ check('JabRef', True) }}
 {{ check('javaruntime', True) }}
 {{ check('krita', True) }}
 {{ check('obs-studio-wiiplayer2-scripts', True) }}
