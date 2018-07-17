@@ -9,3 +9,7 @@ dual-boot-update-grub:
     - name: update-grub
     - onchanges:
       - file: dual-boot-grub-config
+
+dual-boot-set-local-time:
+  cmd.run:
+    - name: timedatectl set-local-rtc 1 --adjust-system-clock
