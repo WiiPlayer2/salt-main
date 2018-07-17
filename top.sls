@@ -24,4 +24,6 @@ base:
     - roles.workstation-ubuntu
   'G@roles:gaming and G@os_family:Windows':
     - roles.gaming-windows
+  'G@roles:dual-boot and G@os:Ubuntu':
+    - roles.dual-boot-ubuntu
 
