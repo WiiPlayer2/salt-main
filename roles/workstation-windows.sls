@@ -22,6 +22,7 @@
 
 {{ check('adobereader', True) }}
 {{ check('cmake', True) }}
+{{ check('cheatengine', True) }}
 {{ check('crystaldiskinfo', True) }}
 {{ check('crystaldiskmark', True) }}
 {{ check('explorersuite', True) }}
