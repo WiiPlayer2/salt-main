@@ -41,6 +41,7 @@
 {{ check('texstudio', True) }}
 {{ check('virtualbox', True) }}
 {{ check('vmware-workstation-player', True) }}
+{{ check('winapioverride', True) }}
 {# {{ check('wincdemu', True) }} #} # Unable to install
 {{ check('x2go', True) }}
 
