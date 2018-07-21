@@ -24,6 +24,7 @@
 {{ check('cmake', True) }}
 {{ check('crystaldiskinfo', True) }}
 {{ check('crystaldiskmark', True) }}
+{{ check('explorersuite', True) }}
 {{ check('ffmpeg', True) }}
 {{ check('HxD', True) }}
 {{ check('ilspy', True) }}
