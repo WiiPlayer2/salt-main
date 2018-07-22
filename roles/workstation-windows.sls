@@ -21,6 +21,9 @@
 {% endmacro %}
 
 {{ check('adobereader', True) }}
+{{ check('audacity', True) }}
+{{ check('audacity-lame', True) }}
+{{ check('audacity-ffmpeg', True) }}
 {{ check('cmake', True) }}
 {{ check('cheatengine', True) }}
 {{ check('crystaldiskinfo', True) }}
