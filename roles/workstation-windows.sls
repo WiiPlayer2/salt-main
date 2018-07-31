@@ -40,6 +40,7 @@
 {{ check('obs-studio', True) }}
 {{ check('pidgin', True) }}
 {{ check('python3', True) }}
+{{ check('RTMPDump', True) }}
 {{ check('teamviewer', True) }}
 {{ check('texstudio', True) }}
 {{ check('virtualbox', True) }}
