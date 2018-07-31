@@ -57,6 +57,8 @@ gitlab.com-homeassistant:
     - target: /home/homeassistant/.homeassistant
     - branch: master
     - user: homeassistant
+    - force_checkout: True
+    - force_fetch: True
     - force_clone: True
     - force_reset: True
     - submodules: True
