@@ -83,6 +83,7 @@ gitlab.com-homeassistant:
     - pip_pkgs:
       - wheel
       - homeassistant
+      - pip
 
 home-assistant-unit:
   file.managed:
