@@ -16,6 +16,10 @@ base:
     - roles.dns-server
   'G@roles:nas-server':
     - roles.nas-server
+  'G@roles:database-server':
+    - roles.database-server
+  'G@roles:auth-server':
+    - roles.auth-server
   'G@roles:ambient-light':
     - roles.ambient-light
   'G@roles:workstation and G@os_family:Windows':
