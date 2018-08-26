@@ -68,6 +68,7 @@ auth-server-slapd-config:
   file.managed:
     - name: /etc/ldap/slapd.conf
     - template: jinja
+    - mode: 640
     - source:
       - salt://roles/auth-server/slapd.conf
 
