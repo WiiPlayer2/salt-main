@@ -41,3 +41,19 @@ auth-server-slapd-service:
       - user: auth-server-user
     - watch:
       - file: auth-server-slapd-config
+
+auth-server-ldap:
+  ldap.managed:
+    - name: ldapi:///
+    - entries:
+      - '{{ data['admin-user'] }}'
+        - replace:
+            description:
+              - LDAP administrator
+            objectClass:
+              - simpleSecurityObject
+              - organizationalRole
+            userPassword:
+            - {{ data['admin-password'] }}
+    - require:
+      - service: auth-server-slapd-service
