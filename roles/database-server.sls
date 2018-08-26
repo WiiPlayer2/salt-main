@@ -36,10 +36,9 @@ database-server-admin:
   mysql_grants.present:
     - grant: all
     - grant_option: True
-    - database: '*'
+    - database: '*.*'
     - user: root
     - host: '%'
     - connection_unix_socket: /var/run/mysqld/mysqld.sock
-    - connection_charset: utf8mb4
     - require:
       - mysql_user: database-server-admin
