@@ -24,6 +24,7 @@ auth-server-db:
 {% endif %}
     - require:
       - pip: auth-server-pip
+
   mysql_database.present:
     - name: {{ data['db-name'] }}
     - connection_host: {{ data['db-host'] }}
@@ -34,8 +35,9 @@ auth-server-db:
 {% endif %}
     - require:
       - pip: auth-server-pip
+
   mysql_grants.present:
-    - grant: all privileges
+    - grant: all
     - database: {{ data['db-name'] }}.*
     - user: {{ data['db-user'] }}
     - host: '%'
@@ -49,6 +51,18 @@ auth-server-db:
       - mysql_user: auth-server-db
       - mysql_database: auth-server-db
       - pip: auth-server-pip
+
+  mysql_query.run_file:
+    - database: {{ data['db-name'] }}
+    - query_file: salt://roles/auth-server/backsql_create.sql
+    - connection_host: {{ data['db-host'] }}
+    - connection_user: {{ db['user'] }}
+    - connection_pass: {{ db['password'] }}
+{% if 'socket' in db %}
+    - connection_unix_socket: {{ db['socket'] }}
+{% endif %}
+    - onchanges:
+      - mysql_database: auth-server-db
 
 auth-server-slapd-config:
   file.managed:
