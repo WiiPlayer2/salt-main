@@ -10,7 +10,7 @@ auth-server-pip:
   pip.installed:
     - name: PyMySQL
     - reload_modules: True
-    - bin_env: /usr/bin/pip3
+    - bin_env: '/usr/bin/pip3'
 
 auth-server-db-user:
   mysql_user.present:

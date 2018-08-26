@@ -9,7 +9,7 @@ database-server-pip:
   pip.installed:
     - name: PyMySQL
     - reload_modules: True
-    - bin_env: /usr/bin/pip3
+    - bin_env: '/usr/bin/pip3'
 
 database-server-admin:
   mysql_user.present:
