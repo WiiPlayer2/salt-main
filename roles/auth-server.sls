@@ -4,7 +4,6 @@
 auth-server-packages:
   pkg.installed:
     - pkgs:
-      - openldap
       - slapd
 
 auth-server-pip:
