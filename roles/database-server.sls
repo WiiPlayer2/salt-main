@@ -40,5 +40,6 @@ database-server-admin:
     - user: root
     - host: '%'
     - connection_unix_socket: /var/run/mysqld/mysqld.sock
+    - connection_charset: utf8
     - require:
       - mysql_user: database-server-admin
