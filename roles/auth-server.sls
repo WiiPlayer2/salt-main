@@ -15,6 +15,7 @@ auth-server-pip:
 auth-server-db:
   mysql_user.present:
     - name: {{ data['db-user'] }}
+    - host: '%'
     - password: {{ data['db-password'] }}
     - connection_host: {{ data['db-host'] }}
     - connection_user: {{ db['user'] }}
