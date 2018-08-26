@@ -42,3 +42,13 @@ database-server-admin:
     - connection_unix_socket: /var/run/mysqld/mysqld.sock
     - require:
       - mysql_user: database-server-admin
+
+database-server-remove-admin:
+  mysql_user.absent:
+    - name: root
+    - host: localhost
+    - connection_unix_socket: /var/run/mysqld/mysqld.sock
+    - require:
+      - pkg: database-server-packages
+      - pip: database-server-pip
+      - service: database-server-service
