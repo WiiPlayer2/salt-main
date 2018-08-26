@@ -14,8 +14,9 @@ database-server-admin:
   mysql_user.present:
     - name: root
     - host: localhost
-    - password: '{{ data['admin-password'] }}'
+    - password: {{ data['admin-password'] }}
     - unix_socket: True
+    - connection_unix_socket: /var/run/mysqld/mysqld.sock
     - require:
       - pkg: database-server-packages
       - pip: database-server-pip

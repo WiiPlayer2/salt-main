@@ -14,7 +14,7 @@ auth-server-pip:
 auth-server-db-user:
   mysql_user.present:
     - name: {{ data['db-user'] }}
-    - password: '{{ data['db-password'] }}'
+    - password: {{ data['db-password'] }}
     - require:
       - pip: auth-server-pip
 
