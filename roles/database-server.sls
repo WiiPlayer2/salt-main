@@ -12,9 +12,9 @@ database-server-pip:
 
 database-server-config:
   file.managed:
-    - name: /etc/mysql/mariadb.conf.d/55-mysqld.cnf
+    - name: /etc/mysql/mariadb.conf.d/50-server.cnf
     - source:
-      - salt://roles/database-server/55-mysqld.cnf
+      - salt://roles/database-server/50-server.cnf
 
 database-server-service:
   service.running:
