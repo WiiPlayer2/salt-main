@@ -25,9 +25,19 @@ auth-server-slapd-config:
     - require:
       - file: auth-server-db
 
+auth-server-user:
+  user.present:
+    - name: openldap
+    - groups:
+      - root
+    - require:
+      - pkg: auth-server-packages
+
 auth-server-slapd-service:
   service.running:
     - name: slapd
     - enable: True
+    - require:
+      - user: auth-server-user
     - watch:
       - file: auth-server-slapd-config
