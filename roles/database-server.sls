@@ -13,7 +13,9 @@ database-server-pip:
 database-server-admin:
   mysql_user.present:
     - name: root
-    - password: {{ data['admin-password'] }}
+    - host: localhost
+    - password: '{{ data['admin-password'] }}'
+    - unix_socket: True
     - require:
       - pkg: database-server-packages
       - pip: database-server-pip
