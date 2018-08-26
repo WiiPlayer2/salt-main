@@ -39,5 +39,6 @@ database-server-admin:
     - database: '*'
     - user: root
     - host: '%'
+    - connection_unix_socket: /var/run/mysqld/mysqld.sock
     - require:
       - mysql_user: database-server-admin
