@@ -9,6 +9,8 @@ auth-server-db:
   file.directory:
     - name: {{ data['db-directory'] }}
     - dir_mode: 700
+    - user: openldap
+    - group: openldap
     - makedirs: True
 
 auth-server-slapd-config:
@@ -16,6 +18,8 @@ auth-server-slapd-config:
     - name: /etc/ldap/slapd.conf
     - template: jinja
     - mode: 600
+    - user: openldap
+    - group: openldap
     - source:
       - salt://roles/auth-server/slapd.conf
     - require:
