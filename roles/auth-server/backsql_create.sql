@@ -34,7 +34,7 @@ create table ldap_entries
 	oc_map_id integer unsigned not null references ldap_oc_mappings(id),
 	parent int NOT NULL ,
 	keyval int NOT NULL 
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 alter table ldap_entries add 
 	constraint unq1_ldap_entries unique
