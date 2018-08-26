@@ -13,7 +13,7 @@ database-server-pip:
 database-server-admin:
   mysql_user.present:
     - name: root
-    - host: localhost
+    - host: '%'
     - password: {{ data['admin-password'] }}
     - unix_socket: True
     - connection_unix_socket: /var/run/mysqld/mysqld.sock
