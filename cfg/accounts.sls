@@ -6,7 +6,7 @@ account-{{ data['user'] }}:
   user.present:
     - name: {{ data['user'] }}
     - password: {{ data['passwd'] }}
-{% if grains['os_family'] != 'Windows' and not data['passwd'].startswith('$') %}
+{% if not data['passwd'].startswith('$') %}
     - hash_password: True
 {% endif %}
 {% endif %}
