@@ -22,6 +22,7 @@ base:
     - roles.auth-server
   'G@roles:ambient-light':
     - roles.ambient-light
+
   'G@roles:workstation and G@os_family:Windows':
     - roles.workstation-windows
   'G@roles:workstation and G@os:Ubuntu':
