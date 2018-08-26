@@ -38,6 +38,7 @@ auth-server-db:
     - grant: all privileges
     - database: {{ data['db-name'] }}.*
     - user: {{ data['db-user'] }}
+    - host: '%'
     - connection_host: {{ data['db-host'] }}
     - connection_user: {{ db['user'] }}
     - connection_pass: {{ db['password'] }}
