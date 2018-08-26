@@ -33,3 +33,11 @@ database-server-admin:
       - pkg: database-server-packages
       - pip: database-server-pip
       - service: database-server-service
+  mysql_grants.present:
+    - grant: all privileges
+    - grant_option: True
+    - database: '*'
+    - user: root
+    - host: '%'
+    - require:
+      - mysql_user: database-server-admin
