@@ -46,7 +46,7 @@ auth-server-ldap:
   ldap.managed:
     - name: ldapi:///
     - entries:
-      - '{{ data['admin-user'] }}'
+      - {{ data['admin-user'] }}:
         - replace:
             description:
               - LDAP administrator
