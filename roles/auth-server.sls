@@ -4,6 +4,7 @@ auth-server-packages:
   pkg.installed:
     - pkgs:
       - slapd
+      - ldap-utils
 
 auth-server-db:
   file.directory:
