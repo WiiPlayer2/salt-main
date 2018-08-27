@@ -2,7 +2,10 @@
 
 dn: {{ data['suffix'] }}
 objectClass: dcObject
+objectClass: organization
 dc: {{ data['dc'] }}
+o: {{ data['name'] }}
+description: {{ data['name'] }}
 
 dn: {{ data['admin-user'] }}
 objectClass: organizationalRole
