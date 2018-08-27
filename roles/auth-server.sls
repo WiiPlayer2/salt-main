@@ -16,13 +16,13 @@ auth-server-db:
 
 auth-server-slapd-config:
   file.managed:
-    - name: /etc/ldap/slapd.d/cn=config/olcDatabase{1}mdb.ldif
+    - name: /etc/ldap/slapd.d/cn=config/olcDatabase={1}mdb.ldif
     - template: jinja
     - mode: 600
     - user: openldap
     - group: openldap
     - source:
-      - salt://roles/auth-server/olcDatabase%7B1%7Dmdb.ldif
+      - salt://roles/auth-server/olcDatabase1mdb.ldif
     - require:
       - file: auth-server-db
 
