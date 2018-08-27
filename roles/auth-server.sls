@@ -16,13 +16,13 @@ auth-server-db:
 
 auth-server-slapd-config:
   file.managed:
-    - name: /etc/ldap/slapd.conf
+    - name: /etc/ldap/slapd.d/cn=config/olcDatabase{1}mdb.ldif
     - template: jinja
     - mode: 600
     - user: openldap
     - group: openldap
     - source:
-      - salt://roles/auth-server/slapd.conf
+      - salt://roles/auth-server/olcDatabase{1}mdb.ldif
     - require:
       - file: auth-server-db
 
@@ -43,18 +43,3 @@ auth-server-slapd-service:
     - watch:
       - file: auth-server-slapd-config
 
-auth-server-ldap:
-  ldap.managed:
-    - name: ldapi:///
-    - entries:
-      - {{ data['admin-user'] }}:
-        - replace:
-            description:
-              - LDAP administrator
-            objectClass:
-              - simpleSecurityObject
-              - organizationalRole
-            userPassword:
-            - {{ data['admin-password'] }}
-    - require:
-      - service: auth-server-slapd-service
