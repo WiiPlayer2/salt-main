@@ -22,7 +22,7 @@ auth-server-slapd-config:
     - user: openldap
     - group: openldap
     - source:
-      - salt://roles/auth-server/olcDatabase{1}mdb.ldif
+      - salt://roles/auth-server/olcDatabase%7B1%7Dmdb.ldif
     - require:
       - file: auth-server-db
 
