@@ -1,0 +1,9 @@
+#{% set data = pillar['auth-server'] %}
+
+dn: {{ data['suffix'] }}
+objectClass: dcObject
+dc: {{ data['dc'] }}
+
+dn: {{ data['admin-user'] }}
+objectClass: organizationalRole
+cn: {{ data['cn'] }}

@@ -5,6 +5,7 @@ auth-server-packages:
     - pkgs:
       - slapd
       - ldap-utils
+      - lmdb-utils
 
 auth-server-db:
   file.directory:
@@ -43,3 +44,13 @@ auth-server-slapd-service:
     - watch:
       - file: auth-server-slapd-config
 
+auth-server-db-init:
+  file.managed:
+    - name: /tmp/auth-server-db-init.ldif
+    - template: jinja
+    - source:
+      - salt://roles/auth-server/core-data.ldif
+  cmd.run:
+    - name: /usr/bin/ldapadd -f /tmp/auth-server-db-init.ldif -x -D "{{ data['admin-user'] }}" -w "{{ data['admin-password'] }}"
+    - onchanges:
+      - file: auth-server-db-init
