@@ -20,6 +20,8 @@ base:
     - roles.database-server
   'G@roles:auth-server':
     - roles.auth-server
+  'G@roles:voip-server':
+    - roles.voip-server
   'G@roles:ambient-light':
     - roles.ambient-light
 
