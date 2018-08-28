@@ -1,7 +1,7 @@
 voip-server-packages:
   pkg.installed:
     - pkgs:
-      - php-ldap
+      - php5-ldap
 
 voip-server-web-service:
   service.running:
