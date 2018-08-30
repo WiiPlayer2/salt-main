@@ -22,6 +22,8 @@ base:
     - roles.auth-server
   'G@roles:voip-server':
     - roles.voip-server
+  'G@roles:log-server':
+    - roles.log-server
   'G@roles:ambient-light':
     - roles.ambient-light
 
