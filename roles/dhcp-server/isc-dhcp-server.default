@@ -17,5 +17,5 @@
 
 # On what interfaces should the DHCP server (dhcpd) serve DHCP requests?
 #	Separate multiple interfaces with spaces, e.g. "eth0 eth1".
-INTERFACESv4="{{ config['interfaces-v4'] or [] | join(' ') }}"
-INTERFACESv6="{{ config['interfaces-v6'] or [] | join(' ') }}"
+INTERFACESv4="{{ config['interfaces-v4'] or [] | map('first') | join(' ') }}"
+INTERFACESv6="{{ config['interfaces-v6'] or [] | map('first') | join(' ') }}"
