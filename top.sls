@@ -12,6 +12,8 @@ base:
     - roles.salt-master
   'G@roles:home-automation':
     - roles.home-automation
+  'G@roles:dhcp-server':
+    - roles.dhcp-server
   'G@roles:dns-server':
     - roles.dns-server
   'G@roles:nas-server':
