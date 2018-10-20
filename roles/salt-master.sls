@@ -1,3 +1,6 @@
+include:
+  - comps.6tunnel-aas
+
 packages:
   pkg.latest:
     - pkgs:
@@ -30,6 +33,17 @@ gitlab.com:
     - branch: master
     - force_reset: True
     - submodules: True
+
+salt-master-6tunnel:
+  file.managed:
+    - name: /etc/6tunnel-aas/salt-master.map
+    - template: jinja
+    - source:
+      - salt://roles/salt-master/salt-master.map
+  service.running:
+    - name: 6tunnel-aas
+    - watch:
+      - file: salt-master-6tunnel
 
 salt-highstate-cron:
   cron.present:
