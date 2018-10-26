@@ -30,6 +30,7 @@ hassio_packages:
     - email: {{ pillar['email'] }}
     - owner: homeassistant
     - group: homeassistant
+    - renew: 15
     - webroot: /var/www/html
 
 homeassistant:
