@@ -32,6 +32,8 @@ hassio_packages:
     - group: homeassistant
     - renew: 15
     - webroot: /var/www/html
+    - onlyif:
+      - "false"
 
 homeassistant:
   user.present:
