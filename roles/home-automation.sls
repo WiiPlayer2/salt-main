@@ -33,7 +33,7 @@ hassio_packages:
     - renew: 15
     - webroot: /var/www/html
     - onlyif:
-      - "false"
+      - "true"
 
 homeassistant:
   user.present:
