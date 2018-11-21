@@ -33,7 +33,7 @@ hassio_packages:
     - renew: 15
     - webroot: /var/www/html
     - onlyif:
-      - "true"
+      - "[ -e /home/homeassistant/request-certificate ]"
 
 homeassistant:
   user.present:
