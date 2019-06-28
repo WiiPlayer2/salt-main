@@ -5,12 +5,12 @@ web-apps-http-server-package:
   pkg.installed:
     - pkgs:
       - apache2
-      - libapache2-mod-ssl
-      - libapache2-mod-rewrite
+      {# - libapache2-mod-ssl
+      - libapache2-mod-rewrite #}
 
 web-apps-config:
   apache.configfile:
-    - name: /etc/apache2/sites-enabled/default.conf
+    - name: /etc/apache2/sites-available/000-default.conf
     - config:
       - VirtualHost:
         this: '*:*'
@@ -20,12 +20,12 @@ web-apps-config:
 {% set apps = commonData['apps'] %}
 {% for name, data in apps.items() %}
 
-web-app-{{ name }}-certificate:
+{# web-app-{{ name }}-certificate:
   acme.cert:
     - name: {{ data['fqdn'] }}
     - email: {{ commonData['email'] }}
     - test_cert: true
-    - renew: 14
+    - renew: 14 #}
 
 web-app-{{ name }}-config:
   apache.configfile:
@@ -39,9 +39,9 @@ web-app-{{ name }}-config:
         ProxyPass: / http://127.0.0.1:{{ data['port'] }}/
         ProxyPassReverse: / http://127.0.0.1:{{ data['port'] }}/
 
-web-app-{{ name }}-site:
+{# web-app-{{ name }}-site:
   apache_site.{{ 'enabled' if data['enabled'] else 'disabled' }}:
-    - name: {{ name }}
+    - name: {{ name }} #}
 
 {% endfor %}
 {% endif %}
