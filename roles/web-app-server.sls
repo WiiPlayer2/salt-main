@@ -7,6 +7,10 @@ web-apps-packages:
     - pkgs:
       - apache2
 
+web-apps-module-headers:
+  apache_module.enabled:
+    - name: headers
+
 web-apps-module-ssl:
   apache_module.enabled:
     - name: ssl
