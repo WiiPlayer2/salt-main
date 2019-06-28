@@ -6,8 +6,14 @@ web-apps-packages:
   pkg.installed:
     - pkgs:
       - apache2
-      {# - libapache2-mod-ssl
-      - libapache2-mod-rewrite #}
+
+web-apps-module-ssl:
+  apache_module.enabled:
+    - name: ssl
+
+web-apps-module-rewrite:
+  apache_module.enabled:
+    - name: rewrite
 
 web-apps-config:
   file.managed:
