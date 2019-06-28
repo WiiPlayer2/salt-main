@@ -28,7 +28,7 @@ web-apps-config:
 web-apps-service:
   service.running:
     - name: apache2
-    - enabled: true
+    - enable: true
     - reload: true
     - watch_any:
       - file: web-apps-config
