@@ -1,7 +1,8 @@
 {% if 'web-apps' in pillar %}
 {% set commonData = pillar['web-apps'] %}
+{% set apps = commonData['apps'] %}
 
-web-apps-http-server-package:
+web-apps-packages:
   pkg.installed:
     - pkgs:
       - apache2
@@ -17,7 +18,16 @@ web-apps-config:
         {# RequestHeader:
           - set "X-Forwarded-Proto" expr=%{REQUEST_SCHEME} #}
 
-{% set apps = commonData['apps'] %}
+web-apps-service:
+  service.running:
+    - name: apache2
+    - enabled: true
+    - reload: true
+    - watch_any:
+{% for name in apps %}
+      - file: web-app-{{ name }}-config
+{% endfor %}
+
 {% for name, data in apps.items() %}
 
 {# web-app-{{ name }}-certificate:
@@ -28,13 +38,14 @@ web-apps-config:
     - renew: 14 #}
 
 web-app-{{ name }}-config:
-  apache.configfile:
+  file.managed:
     - name: /etc/apache2/sites-available/{{ name }}.conf
-    - config:
-      - VirtualHost:
-        this: '*:80'
-        ServerName:
-          - {{ data['fqdn'] }}
+    - source:
+      - salt://roles/web-app-server/site-config.conf
+    - template: jinja
+    - context:
+        fqdn: {{ data['fqdn'] }}
+        port: {{ data['port'] }}
         {# ProxyPreserveHost: 'on'
         ProxyPass: / http://127.0.0.1:{{ data['port'] }}/
         ProxyPassReverse: / http://127.0.0.1:{{ data['port'] }}/ #}
