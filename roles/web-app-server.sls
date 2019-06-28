@@ -10,13 +10,10 @@ web-apps-packages:
       - libapache2-mod-rewrite #}
 
 web-apps-config:
-  apache.configfile:
+  file.managed:
     - name: /etc/apache2/sites-available/000-default.conf
-    - config:
-      - VirtualHost:
-        this: '*:*'
-        {# RequestHeader:
-          - set "X-Forwarded-Proto" expr=%{REQUEST_SCHEME} #}
+    - source:
+      - salt://roles/web-app-server/default.conf
 
 web-apps-service:
   service.running:
@@ -24,6 +21,7 @@ web-apps-service:
     - enabled: true
     - reload: true
     - watch_any:
+      - file: web-apps-config
 {% for name in apps %}
       - file: web-app-{{ name }}-config
 {% endfor %}
@@ -46,13 +44,10 @@ web-app-{{ name }}-config:
     - context:
         fqdn: {{ data['fqdn'] }}
         port: {{ data['port'] }}
-        {# ProxyPreserveHost: 'on'
-        ProxyPass: / http://127.0.0.1:{{ data['port'] }}/
-        ProxyPassReverse: / http://127.0.0.1:{{ data['port'] }}/ #}
 
-{# web-app-{{ name }}-site:
+web-app-{{ name }}-site:
   apache_site.{{ 'enabled' if data['enabled'] else 'disabled' }}:
-    - name: {{ name }} #}
+    - name: {{ name }}.conf
 
 {% endfor %}
 {% endif %}
