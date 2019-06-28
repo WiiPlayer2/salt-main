@@ -14,8 +14,8 @@ web-apps-config:
     - config:
       - VirtualHost:
         this: '*:*'
-        RequestHeader:
-          - set "X-Forwarded-Proto" expr=%{REQUEST_SCHEME}
+        {# RequestHeader:
+          - set "X-Forwarded-Proto" expr=%{REQUEST_SCHEME} #}
 
 {% set apps = commonData['apps'] %}
 {% for name, data in apps.items() %}
@@ -35,9 +35,9 @@ web-app-{{ name }}-config:
         this: '*:80'
         ServerName:
           - {{ data['fqdn'] }}
-        ProxyPreserveHost: 'on'
+        {# ProxyPreserveHost: 'on'
         ProxyPass: / http://127.0.0.1:{{ data['port'] }}/
-        ProxyPassReverse: / http://127.0.0.1:{{ data['port'] }}/
+        ProxyPassReverse: / http://127.0.0.1:{{ data['port'] }}/ #}
 
 {# web-app-{{ name }}-site:
   apache_site.{{ 'enabled' if data['enabled'] else 'disabled' }}:
