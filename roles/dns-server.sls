@@ -29,7 +29,7 @@ bind9-db-domain:
     - onchanges:
       - file: bind9-db-domain-stage
 
-{% for zone, zData in pillar['zones'].items() %}
+{% for zone, zData in data['zones'].items() %}
 
 'dns-server-zone-{{ zone }}-stage':
   file.managed:
@@ -69,6 +69,6 @@ bind9-service:
     - watch_any:
       - file: bind9-named-conf
       - file: bind9-db-domain
-{% for zone in pillar['zones'] %}
+{% for zone in data['zones'] %}
       - file: dns-server-zone-{{ zone }}
 {% endfor %}
