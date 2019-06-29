@@ -38,6 +38,7 @@ bind9-db-domain:
     - source:
       - salt://roles/dns-server/db.zone.stage
     - context:
+        fqdn: {{ zone }}
         data:
 {% for k, v in zData.items() %}
           - name: '{{ k }}'
@@ -51,6 +52,8 @@ bind9-db-domain:
     - template: jinja
     - source:
       - salt://roles/dns-server/db.zone
+    - onchanges:
+      - file: 'dns-server-zone-{{ zone }}-stage'
     - context:
         fqdn: {{ zone }}
         data:
