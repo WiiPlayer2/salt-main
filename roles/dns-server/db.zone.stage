@@ -7,8 +7,8 @@ $TTL	604800
 		2419200		; Expire
 		604800	)	; Negative Cache TTL
 ;
-@		IN	NS	{{ fqdn }}.
-@		IN	NS	{{ parent }}.
+		IN	NS	{{ fqdn }}.
+		IN	NS	{{ parent }}.
 ;
 {% for record in data -%}
 {{ record['name'] }} {{ record['type'] }} {{ record['record'] }}
