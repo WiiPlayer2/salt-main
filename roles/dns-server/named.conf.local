@@ -2,3 +2,10 @@ zone "local" {
     type master;
     file "/etc/bind/zones/db.local";
 };
+
+{% for zone in pillar['dns-server']['zones'] %}
+zone "{{ zone }}" {
+    type master;
+    file "/etc/bind/zones/db.{zone}";
+}
+{% endfor %}

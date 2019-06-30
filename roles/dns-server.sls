@@ -10,6 +10,7 @@ bind9-named-conf:
   file.managed:
     - name: /etc/bind/named.conf.local
     - group: bind
+    - template: jinja
     - source:
       - salt://roles/dns-server/named.conf.local
 

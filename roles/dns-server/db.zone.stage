@@ -7,7 +7,7 @@ $TTL	604800
 		2419200		; Expire
 		604800	)	; Negative Cache TTL
 ;
-@		IN	NS	{{ grains['host'] }}.
+@		IN	NS	{{ fqdn }}.
 ;
 {% for record in data -%}
 {{ record['name'] }} {{ record['type'] }} {{ record['record'] }}
