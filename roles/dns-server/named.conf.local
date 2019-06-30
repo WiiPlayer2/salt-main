@@ -6,6 +6,6 @@ zone "local" {
 {% for zone in pillar['dns-server']['zones'] %}
 zone "{{ zone }}" {
     type master;
-    file "/etc/bind/zones/db.{zone}";
+    file "/etc/bind/zones/db.{{ zone }}";
 };
 {% endfor %}
