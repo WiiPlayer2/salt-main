@@ -1,13 +1,12 @@
 $ORIGIN	{{ fqdn }}.
 $TTL	604800
 @	IN	SOA	{{ fqdn }}. root.{{ fqdn }}. (
-		{{ salt['counter.inc']('dns-server-zone-' + fqdn) }}		; Serial
+		{{ salt['counter.inc']('dns-server-zone-' + fqdn) if not isstage else '__SERIAL__' }}		; Serial
 		604800		; Refresh
 		86400		; Retry
 		2419200		; Expire
 		604800	)	; Negative Cache TTL
 ;
-		IN	NS	{{ fqdn }}.
 		IN	NS	{{ parent }}.
 ;
 {% for record in data -%}

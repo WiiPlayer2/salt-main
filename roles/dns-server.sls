@@ -38,8 +38,9 @@ bind9-db-domain:
     - name: /etc/bind/zones/db.{{ zone }}{{ '.stage' if isStage else '' }}
     - template: jinja
     - source:
-      - salt://roles/dns-server/db.zone{{ '.stage' if isStage else '' }}
+      - salt://roles/dns-server/db.zone
     - context:
+        isstage: {{ 'true' if isStage else 'false' }}
         fqdn: {{ zone }}
         parent: {{ zData['parent'] }}
         data:
