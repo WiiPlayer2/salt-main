@@ -40,8 +40,9 @@ bind9-db-domain:
       - salt://roles/dns-server/db.zone.stage
     - context:
         fqdn: {{ zone }}
+        parent: {{ zData['parent'] }}
         data:
-{% for k, v in zData.items() %}
+{% for k, v in zData['records'].items() %}
           - name: '{{ k }}'
             type: {{ v['type'] }}
             record: {{ v['record'] }}
