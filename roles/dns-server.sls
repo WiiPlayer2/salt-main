@@ -32,12 +32,13 @@ bind9-db-domain:
 
 {% for zone, zData in data['zones'].items() %}
 
-'dns-server-zone-{{ zone }}-stage':
+{% macro zoneConfig(isStage) %}
+'dns-server-zone-{{ zone }}{% '-stage' if isStage else '' %}'
   file.managed:
-    - name: /etc/bind/zones/db.{{ zone }}.stage
+    - name: /etc/bind/zones/db.{{ zone }}{% '.stage' if isStage else '' %}
     - template: jinja
     - source:
-      - salt://roles/dns-server/db.zone.stage
+      - salt://roles/dns-server/db.zone{% '.stage' if isStage else '' %}
     - context:
         fqdn: {{ zone }}
         parent: {{ zData['parent'] }}
@@ -47,23 +48,13 @@ bind9-db-domain:
             type: {{ v['type'] }}
             record: {{ v['record'] }}
 {% endfor %}
+{% endmacro %}
 
-'dns-server-zone-{{ zone }}':
-  file.managed:
-    - name: /etc/bind/zones/db.{{ zone }}
-    - template: jinja
-    - source:
-      - salt://roles/dns-server/db.zone
+{{ zoneConfig(true) }}
+
+{{ zoneConfig(false) }}
     - onchanges:
       - file: 'dns-server-zone-{{ zone }}-stage'
-    - context:
-        fqdn: {{ zone }}
-        data:
-{% for k, v in zData.items() %}
-          - name: '{{ k }}'
-            type: {{ v['type'] }}
-            record: {{ v['record'] }}
-{% endfor %}
 
 {% endfor %}
 
