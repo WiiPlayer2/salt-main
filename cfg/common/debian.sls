@@ -9,3 +9,8 @@ common-tools:
       - python3-pip
       - nmap
       - lsof
+
+common-ssh-service:
+  service.running:
+    - name: ssh
+    - enable: true
