@@ -4,4 +4,4 @@ docker-pip:
 
 docker-compose-pip:
   pip.installed:
-    - name: docker-compose
+    - name: docker-compose == 1.21.0

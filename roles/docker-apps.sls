@@ -23,9 +23,9 @@ docker-app-{{ name }}-compose:
   module.wait:
     - name: dockercompose.up
     - path: /docker-apps/{{ name }}
-    - watch:
+    {# - watch:
       - file: docker-app-{{ name }}-env
-      - git: docker-app-{{ name }}-repo
+      - git: docker-app-{{ name }}-repo #}
 
 {% endfor %}
 {% endif %}
