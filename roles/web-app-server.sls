@@ -7,17 +7,11 @@ web-apps-packages:
     - pkgs:
       - apache2
 
-web-apps-module-headers:
+{% for mod in ['headers', 'ssl', 'rewrite', 'proxy'] %}
+web-apps-module-{{ mod }}:
   apache_module.enabled:
-    - name: headers
-
-web-apps-module-ssl:
-  apache_module.enabled:
-    - name: ssl
-
-web-apps-module-rewrite:
-  apache_module.enabled:
-    - name: rewrite
+    - name: {{ mod }}
+{% endfor %}
 
 web-apps-config:
   file.managed:
