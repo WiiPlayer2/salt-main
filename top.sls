@@ -3,6 +3,7 @@ base:
     - cfg.accounts
 
   'G@os_family:Debian':
+    - cfg.time
     - cfg.common.debian
     - cfg.mounts
     - roles.docker-apps
