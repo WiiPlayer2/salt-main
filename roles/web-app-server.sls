@@ -7,7 +7,7 @@ web-apps-packages:
     - pkgs:
       - apache2
 
-{% for mod in ['headers', 'ssl', 'rewrite', 'proxy'] %}
+{% for mod in ['headers', 'ssl', 'rewrite', 'proxy', 'proxy_http'] %}
 web-apps-module-{{ mod }}:
   apache_module.enabled:
     - name: {{ mod }}
