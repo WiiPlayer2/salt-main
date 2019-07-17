@@ -23,7 +23,7 @@ docker-app-{{ name }}-compose:
   cmd.wait:
     - name: docker-compose build && docker-compose up -d
     - cwd: /docker-apps/{{ name }}
-    - watch:
+    - watch_any:
       - file: docker-app-{{ name }}-env
       - git: docker-app-{{ name }}-repo
 
