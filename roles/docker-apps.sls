@@ -19,20 +19,13 @@ docker-app-{{ name }}-env:
     - name: /docker-apps/{{ name }}/.env
     - contents_pillar: docker-apps:{{ name }}:env
 
-docker-app-{{ name }}-compose-build:
-  module.wait:
-    - name: dockercompose.build
-    - path: /docker-apps/{{ name }}
-    {# - watch:
+docker-app-{{ name }}-compose:
+  cmd.wait:
+    - name: docker-compose build && docker-compose up -d
+    - cwd: /docker-apps/{{ name }}
+    - watch:
       - file: docker-app-{{ name }}-env
-      - git: docker-app-{{ name }}-repo #}
-
-docker-app-{{ name }}-compose-up:
-  module.wait:
-    - name: dockercompose.up
-    - path: /docker-apps/{{ name }}
-    - require:
-      - module: docker-app-{{ name }}-compose-build
+      - git: docker-app-{{ name }}-repo
 
 {% endfor %}
 {% endif %}
