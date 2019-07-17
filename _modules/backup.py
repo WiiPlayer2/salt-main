@@ -37,7 +37,7 @@ def _download(remotePath, path):
 def _upload(path, remotePath):
     dbx = _getDbx()
     with open(path, 'rb') as f:
-        dbx.files_upload(f.read(), _getBackupName(name), mode=WriteMode('overwrite'))
+        dbx.files_upload(f.read(), remotePath, mode=WriteMode('overwrite'))
 
 def backup(name, path):
     tmpPath = _compress(path)
