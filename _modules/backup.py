@@ -16,7 +16,7 @@ def _getDbx():
     return dbx
 
 def _getBackupName(name):
-    return socket.gethostname() + '_' + name + '.tar.gz'
+    return '/' + socket.gethostname() + '_' + name + '.tar.gz'
 
 def _compress(path) -> str:
     name = tempfile.mktemp()
@@ -37,13 +37,13 @@ def _download(remotePath, path):
 def _upload(path, remotePath):
     dbx = _getDbx()
     with open(path, 'rb') as f:
-        dbx.files_upload(f.read(), mode=WriteMode('overwrite'))
+        dbx.files_upload(f.read(), _getBackupName(), mode=WriteMode('overwrite'))
 
 def backup(name, path):
     tmpPath = _compress(path)
-    _upload(tmpPath, '/' + _getBackupName(name))
+    _upload(tmpPath, _getBackupName(name))
 
 def restore(name, path):
     tmpPath = tempfile.mktemp()
-    _download('/' + _getBackupName(name), tmpPath)
+    _download(_getBackupName(name), tmpPath)
     _extract(path, tmpPath)
