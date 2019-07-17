@@ -21,7 +21,7 @@ def _getBackupName(name):
 def _compress(path) -> str:
     name = tempfile.mktemp()
     with tarfile.open(name, 'w:gz') as tar:
-        tar.add(path)
+        tar.add(path, '')
         tar.close()
     return name
 
