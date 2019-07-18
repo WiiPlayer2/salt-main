@@ -1,3 +1,3 @@
 timezone:
-  - timezone.system:
+  timezone.system:
     - name: {{ pillar['timezone'] }}
