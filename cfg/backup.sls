@@ -1,5 +1,5 @@
 {% set paths = salt['pillar.get']('backup:paths', {}) %}
-{% for name, path = paths.items() %}
+{% for name, path in paths.items() %}
 
 backup-{{ name }}:
   backup.managed:
