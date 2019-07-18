@@ -1,6 +1,7 @@
 base:
   '*':
     - cfg.accounts
+    - cfg.backup
 
   'G@os_family:Debian':
     - cfg.time
